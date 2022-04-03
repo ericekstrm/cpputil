@@ -15,6 +15,10 @@ FetchContent_MakeAvailable(googletest)
 add_library(cpputil STATIC
   mylib.cc
   )
+target_include_directories(  
+  cpputil
+  PUBLIC ${PROJECT_SOURCE_DIR}
+  )
 
 add_subdirectory(unittests)
 
