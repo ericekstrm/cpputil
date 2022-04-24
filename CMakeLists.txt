@@ -12,13 +12,12 @@ FetchContent_Declare(
   )
 FetchContent_MakeAvailable(googletest)
 
-add_library(cpputil STATIC
-  mylib.cc
-  )
-target_include_directories(  
-  cpputil
-  PUBLIC ${PROJECT_SOURCE_DIR}
-  )
+add_library(cpputil INTERFACE)
 
-add_subdirectory(unittests)
+target_include_directories(cpputil INTERFACE
+  include)
+#target_include_directories(cpputil PRIVATE
+#  src)
+
+add_subdirectory(test)
 
