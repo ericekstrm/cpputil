@@ -40,4 +40,7 @@ vector<2, T> operator+(T const& lhs, vector<2, T> const& rhs);
 template<typename T>
 vector<2, T> operator*(T const& lhs, vector<2, T> const& rhs);
 
+using vec2i = vector<2, int>;
+using vec2f = vector<2, float>;
+
 #include "vector.tcc"
