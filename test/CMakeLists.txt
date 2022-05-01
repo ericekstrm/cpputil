@@ -1,3 +1,8 @@
-#add_executable(cpputil_unittest)
+add_executable(cpputil-vector-test
+  vector.test.cc)
 
-#target_link_libraries(cpputil_unittest cpputil gtest gtest_main)
+#target_include_directories(cpputil-vector-test PUBLIC
+#  ../include
+#  ../src)
+
+target_link_libraries(cpputil-vector-test cpputil gtest gtest_main)
