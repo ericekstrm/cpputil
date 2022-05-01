@@ -14,7 +14,7 @@ public:
         struct { T s, t; }; //p, q
     };
 
-    vector(T const& x, T const& y);
+    vector(T const& x = T{}, T const& y = T{});
     
     vector<2, T>  operator+ (vector<2, T> const& rhs) const;
     vector<2, T>& operator+=(vector<2, T> const& rhs);
