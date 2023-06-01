@@ -96,5 +96,7 @@ using vec2i = vector<2, int>;
 using vec2f = vector<2, float>;
 using vec3i = vector<3, int>;
 using vec3f = vector<3, float>;
+using vec4i = vector<4, int>;
+using vec4f = vector<4, float>;
 
 #include "vector.tcc"
