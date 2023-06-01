@@ -26,6 +26,9 @@ bool operator!=(vector<N, T> const& lhs, vector<N, T> const& rhs);
 template<uint8_t N, typename T>
 vector<N, T> operator*(T const& lhs, vector<N, T> const& rhs);
 
+template<uint8_t N, typename T>
+std::ostream& operator<<(std::ostream& os, vector<N, T> const& rhs);
+
 // ==================
 // ===| vector 2 |===
 // ==================
