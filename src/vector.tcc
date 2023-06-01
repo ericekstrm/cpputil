@@ -156,3 +156,59 @@ vector<3, T>::operator std::string() const
 {
     return "[" + std::to_string(x) + " " + std::to_string(y) + " " + std::to_string(z) + "]";
 }
+
+// ==================
+// ===| vector 4 |===
+// ==================
+
+template<typename T>
+vector<4, T>::vector()
+    : vector{T{}, T{}, T{}}
+{}
+
+template<typename T>
+vector<4, T>::vector(T const& x, T const& y, T const& z, T const& w)
+    : x {x}, y {y}, z {z}, w{w}
+{ }
+
+template<typename T>
+vector<4, T> vector<4, T>::operator+(vector<4, T> const& rhs) const
+{
+    return vector{x + rhs.x, y + rhs.y, z + rhs.z, w + rhs.w};
+}
+
+template<typename T>
+vector<4, T> vector<4, T>::operator-() const
+{
+    return vector{-x, -y, -z, -w};
+}
+
+template<typename T>
+vector<4, T> vector<4, T>::operator*(T const& rhs) const
+{
+    return vector{x * rhs, y * rhs, z * rhs, w * rhs};
+}
+
+template<typename T>
+vector<4, T> vector<4, T>::operator/(T const& rhs) const
+{
+    return vector{x / rhs, y / rhs, z / rhs, w / rhs};
+}
+
+template<typename T>
+T vector<4, T>::operator*(vector<4, T> const& rhs) const
+{
+    return x * rhs.x + y * rhs.y + z * rhs.z + w * rhs.w;
+}
+
+template<typename T>
+bool vector<4, T>::operator==(vector<4, T> const& rhs) const
+{
+    return x == rhs.x && y == rhs.y && z == rhs.z && w == rhs.w;
+}
+
+template<typename T>
+vector<4, T>::operator std::string() const
+{
+    return "[" + std::to_string(x) + " " + std::to_string(y) + " " + std::to_string(z) + " " + std::to_string(w) + "]";
+}
