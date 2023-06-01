@@ -45,6 +45,12 @@ vector<N, T> operator*(T const& lhs, vector<N, T> const& rhs)
     return rhs * lhs;
 }
 
+template<uint8_t N, typename T>
+std::ostream& operator<<(std::ostream& os, vector<N, T> const& rhs)
+{
+    return os << static_cast<std::string>(rhs);
+}
+
 // ==================
 // ===| vector 2 |===
 // ==================

@@ -2,6 +2,8 @@
 
 #include <cpputil/vector.h>
 
+#include <sstream>
+
 TEST(Vector2, Initalization)
 {
     vec2i v1 {5, 2};
@@ -233,4 +235,12 @@ TEST(Vector4, Linear_Algebra)
     vec4i v4 {1, 0, 1, 1};
     ASSERT_EQ(v3 * v4, 0);
     
+}
+
+TEST(Vector, Stream_Operator)
+{
+    vec4i v1 {1,2,3,4};
+    std::ostringstream oss;
+    oss << v1;
+    ASSERT_EQ(oss.str(), "[1 2 3 4]");
 }

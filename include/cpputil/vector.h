@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <iostream>
 
 template<uint8_t N, typename T>
 class vector;
