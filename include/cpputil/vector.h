@@ -88,6 +88,37 @@ public:
     
 };
 
+// ==================
+// ===| vector 4 |===
+// ==================
+
+template<typename T>
+class vector<4, T>
+{
+public: 
+    
+    union {
+        struct { T x, y, z, w; };
+        struct { T r, g, b, a; };
+        struct { T s, t, v, u; };
+    };
+
+    vector();
+    vector(T const& x, T const& y, T const& z, T const& w);
+    
+    vector<4, T> operator+ (vector<4, T> const& rhs) const;
+    vector<4, T> operator- () const;
+    vector<4, T> operator* (T const& rhs) const;
+    vector<4, T> operator/ (T const& rhs) const;
+
+    bool operator==(vector<4, T> const& rhs) const;
+    operator std::string() const; 
+
+    //dot product
+    T operator*(vector<4, T> const& rhs) const;
+    
+};
+
 // ===========================
 // ===| type declarations |===
 // ===========================

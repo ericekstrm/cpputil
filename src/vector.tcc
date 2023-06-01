@@ -163,7 +163,7 @@ vector<3, T>::operator std::string() const
 
 template<typename T>
 vector<4, T>::vector()
-    : vector{T{}, T{}, T{}}
+    : vector{T{}, T{}, T{}, T{}}
 {}
 
 template<typename T>
