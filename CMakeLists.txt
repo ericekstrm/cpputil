@@ -18,5 +18,6 @@ target_include_directories(cpputil INTERFACE
 target_include_directories(cpputil INTERFACE
   src)
 
-add_subdirectory(test)
-
+if (PROJECT_IS_TOP_LEVEL)
+   add_subdirectory(test)
+endif()
