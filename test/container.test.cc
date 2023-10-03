@@ -5,7 +5,7 @@
 
 #include <sstream>
 
-TEST(Vector2, Initalization)
+TEST(Container, Print_Vector)
 {
     std::vector<int> vi { 1,2,3,4,5 };
 
