@@ -1,6 +1,8 @@
 #pragma once
 
-template <typename C, typename T = typename C::value_type>
-std::ostream& operator<<(std::ostream& os, C const& container);
+#include <vector>
+
+template <typename T>
+std::ostream& operator<<(std::ostream& os, std::vector<T> const& container);
 
 #include "container.tcc"
