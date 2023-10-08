@@ -11,11 +11,13 @@ FetchContent_Declare(googletest
   )
 FetchContent_MakeAvailable(googletest)
 
-add_library(cpputil INTERFACE)
+add_library(cpputil STATIC
+  src/string_util.cc
+)
 
-target_include_directories(cpputil INTERFACE
+target_include_directories(cpputil PUBLIC
   include)
-target_include_directories(cpputil INTERFACE
+target_include_directories(cpputil PUBLIC
   src)
 
 if (PROJECT_IS_TOP_LEVEL)
