@@ -117,6 +117,7 @@ template<typename T>
 void vector<2, T>::normalize()
 {
     double l {length()};
+    if (l < 0.000001) return;
     x /= l;
     y /= l;
 }
@@ -187,6 +188,7 @@ template<typename T>
 void vector<3, T>::normalize()
 {
     double l {length()};
+    if (l < 0.000001) return;
     x /= l;
     y /= l;
     z /= l;
@@ -261,6 +263,7 @@ template<typename T>
 void vector<4, T>::normalize()
 {
     double l {length()};
+    if (l < 0.000001) return;
     x /= l;
     y /= l;
     z /= l;

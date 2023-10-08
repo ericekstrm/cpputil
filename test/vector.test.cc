@@ -90,6 +90,12 @@ TEST(Vector2, Functions)
     ASSERT_EQ(static_cast<std::string>(v12), "[3 4]");
     v12.normalize();
     ASSERT_EQ(static_cast<std::string>(v12), "[0 0]");
+
+    // Zero (will round down to integer after division)
+    vec2f v13 {0, 0};
+    ASSERT_EQ(static_cast<std::string>(v13), "[0 0]");
+    v13.normalize();
+    ASSERT_EQ(static_cast<std::string>(v13), "[0 0]");
 }
 
 TEST(Vector2, Linear_Algebra)
