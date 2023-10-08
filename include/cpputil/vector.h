@@ -56,6 +56,9 @@ public:
     bool operator==(vector<2, T> const& rhs) const;
     operator std::string() const;
 
+    double length() const;
+    void normalize();
+
     //dot product
     T operator*(vector<2, T> const& rhs) const;
         
@@ -87,6 +90,9 @@ public:
     bool operator==(vector<3, T> const& rhs) const;
     operator std::string() const; 
 
+    double length() const;
+    void normalize();
+
     //dot product
     T operator*(vector<3, T> const& rhs) const;
     
@@ -117,6 +123,9 @@ public:
 
     bool operator==(vector<4, T> const& rhs) const;
     operator std::string() const; 
+
+    double length() const;
+    void normalize();
 
     //dot product
     T operator*(vector<4, T> const& rhs) const;
