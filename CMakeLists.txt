@@ -11,6 +11,12 @@ FetchContent_Declare(googletest
   )
 FetchContent_MakeAvailable(googletest)
 
+FetchContent_Declare(fmt
+  GIT_REPOSITORY https://github.com/fmtlib/fmt.git
+  GIT_TAG master
+)
+FetchContent_MakeAvailable(fmt)
+
 add_library(cpputil STATIC
   src/string_util.cc
 )
@@ -19,6 +25,9 @@ target_include_directories(cpputil PUBLIC
   include)
 target_include_directories(cpputil PUBLIC
   src)
+
+target_link_libraries(cpputil
+  fmt)
 
 if (PROJECT_IS_TOP_LEVEL)
    add_subdirectory(test)
