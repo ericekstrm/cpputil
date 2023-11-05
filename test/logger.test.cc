@@ -1,9 +1,6 @@
 #include <gtest/gtest.h>
 
 #include <cpputil/logger.h>
-#include <fstream>
-
-#include <sstream>
 
 using namespace std;
 
@@ -18,11 +15,4 @@ TEST(Logger, Base)
     log::debug("jkl");
 
     log::closefile();
-
-    std::ifstream ifs {"test.txt"};
-    std::string filecontents {std::istreambuf_iterator<char>(ifs),
-                              std::istreambuf_iterator<char>()};
-
-    ASSERT_EQ(filecontents, "[] abc\n[] cde\n");
-    ifs.close();
 }

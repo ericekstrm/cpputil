@@ -60,7 +60,7 @@ private:
         
         if (file != nullptr)
         {
-            fmt::print(file, "[{}] {}\n", fmt::localtime(t), fmt::format(s, args...));
+            fmt::print(file, "[{:%Y-%m-%d %H:%M:%S}] {}\n", fmt::localtime(t), fmt::format(s, args...));
         }
 
         if (use_stdout)
