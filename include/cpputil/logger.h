@@ -60,12 +60,12 @@ private:
         
         if (file != nullptr)
         {
-            fmt::print(file, "[{:%Y-%m-%d %H:%M:%S}] {}\n", fmt::localtime(t), fmt::format(s, args...));
+            fmt::print(file, "[{:%Y-%m-%d %H:%M:%S}] {}\n", fmt::localtime(t), fmt::format(fmt::runtime(s), args...));
         }
 
         if (use_stdout)
         {
-            fmt::print(fmt::fg(color), "[{:%Y-%m-%d %H:%M:%S}] {}\n", fmt::localtime(t), fmt::format(s, args...));
+            fmt::print(fmt::fg(color), "[{:%Y-%m-%d %H:%M:%S}] {}\n", fmt::localtime(t), fmt::format(fmt::runtime(s), args...));
         }
     }
         
