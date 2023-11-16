@@ -13,12 +13,6 @@ FetchContent_Declare(googletest
   )
 FetchContent_MakeAvailable(googletest)
 
-# FetchContent_Declare(fmt
-#   GIT_REPOSITORY https://github.com/fmtlib/fmt.git
-#   GIT_TAG master
-# )
-# FetchContent_MakeAvailable(fmt)
-
 find_package(fmt)
 
 add_library(cpputil STATIC
