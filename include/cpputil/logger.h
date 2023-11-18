@@ -65,7 +65,8 @@ private:
 
         if (use_stdout)
         {
-            fmt::print(fmt::fg(color), "[{:%Y-%m-%d %H:%M:%S}] {}\n", fmt::localtime(t), fmt::format(fmt::runtime(s), args...));
+            fmt::print(fmt::fg(color), "[{:%Y-%m-%d %H:%M:%S}] {}", fmt::localtime(t), fmt::format(fmt::runtime(s), args...));
+            fmt::print("\n");
         }
     }
         
