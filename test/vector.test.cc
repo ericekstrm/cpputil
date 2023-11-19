@@ -2,6 +2,7 @@
 
 #include <cpputil/vector.h>
 
+#include <unordered_set>
 #include <sstream>
 
 TEST(Vector2, Initalization)
@@ -93,9 +94,9 @@ TEST(Vector2, Functions)
 
     // Zero (will round down to integer after division)
     vec2f v13 {0, 0};
-    ASSERT_EQ(static_cast<std::string>(v13), "[0 0]");
+    ASSERT_EQ(static_cast<std::string>(v13), "[0.000 0.000]");
     v13.normalize();
-    ASSERT_EQ(static_cast<std::string>(v13), "[0 0]");
+    ASSERT_EQ(static_cast<std::string>(v13), "[0.000 0.000]");
 }
 
 TEST(Vector2, Linear_Algebra)
@@ -108,7 +109,6 @@ TEST(Vector2, Linear_Algebra)
     ASSERT_EQ(v1 * v2, 37);
     ASSERT_EQ(v1 * v3, 0);
 }
-
 
 TEST(Vector2, Stream_Operator)
 {
@@ -335,4 +335,20 @@ TEST(Vector4, Stream_Operator)
     std::ostringstream oss;
     oss << v1 << " " << v2;
     ASSERT_EQ(oss.str(), "[1 2 3 4] [1.123 2.343 3.789 4.000]");
+}
+
+TEST(Vector2, vector_in_set)
+{
+    std::unordered_set<vec2i> s1 {};
+    s1.insert(vec2i{5,5});
+    s1.insert(vec2i{5,5});
+
+    ASSERT_TRUE(s1.contains(vec2i{5,5}));
+
+    std::unordered_set<vec2f> s2 {};
+    s2.insert(vec2f{5.4, 1.2});
+    s2.insert(vec2f{3.3, 9.9});
+
+    ASSERT_TRUE(s2.contains(vec2f{3.3, 9.9}));
+
 }
