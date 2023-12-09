@@ -17,6 +17,7 @@ find_package(fmt)
 
 add_library(cpputil STATIC
   src/string_util.cc
+  src/geometry.cc
 )
 
 target_include_directories(cpputil PUBLIC
