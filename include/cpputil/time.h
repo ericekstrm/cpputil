@@ -11,17 +11,11 @@ public:
     {
     }
 
-    double as_seconds() const
+    template<typename Rep = std::ratio<1>>
+    double now() const
     {
-        auto now = std::chrono::steady_clock::now();
-        std::chrono::duration<double> diff { now - prev };
-        return diff.count();
-    }
-    
-    double as_millis() const
-    {
-        auto now = std::chrono::steady_clock::now();
-        std::chrono::duration<double, std::milli> diff { now - prev };
+        auto time_now = std::chrono::steady_clock::now();
+        std::chrono::duration<double, Rep> diff { time_now - prev };
         return diff.count();
     }
     
