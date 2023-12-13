@@ -32,6 +32,6 @@ public:
     
 private:
     
-    std::chrono::time_point<std::chrono::system_clock> prev;
+    std::chrono::time_point<std::chrono::steady_clock> prev;
     
 };
