@@ -1,3 +1,6 @@
+#include <cmath>
+#include <sstream>
+#include <iomanip>
 
 template<uint8_t N, typename T>
 vector<N, T>& operator+=(vector<N, T> & lhs, vector<N, T> const& rhs)
@@ -98,7 +101,25 @@ bool vector<2, T>::operator==(vector<2, T> const& rhs) const
 template<typename T>
 vector<2, T>::operator std::string() const
 {
-    return "[" + std::to_string(x) + " " + std::to_string(y) + "]";
+    std::ostringstream oss {};
+    oss << std::setprecision(3) << std::fixed;
+    oss << "[" << x << " " << y << "]";
+    return oss.str();
+}
+
+template<typename T>
+double vector<2, T>::length() const
+{
+    return sqrt(x*x + y*y);
+}
+
+template<typename T>
+void vector<2, T>::normalize()
+{
+    double l {length()};
+    if (l < 0.000001) return;
+    x /= l;
+    y /= l;
 }
 
 template<typename T>
@@ -158,9 +179,28 @@ bool vector<3, T>::operator==(vector<3, T> const& rhs) const
 }
 
 template<typename T>
+double vector<3, T>::length() const
+{
+    return sqrt(x*x + y*y + z*z);
+}
+
+template<typename T>
+void vector<3, T>::normalize()
+{
+    double l {length()};
+    if (l < 0.000001) return;
+    x /= l;
+    y /= l;
+    z /= l;
+}
+
+template<typename T>
 vector<3, T>::operator std::string() const
 {
-    return "[" + std::to_string(x) + " " + std::to_string(y) + " " + std::to_string(z) + "]";
+    std::ostringstream oss {};
+    oss << std::setprecision(3) << std::fixed;
+    oss << "[" << x << " " << y << " " << z << "]";
+    return oss.str();
 }
 
 // ==================
@@ -214,7 +254,27 @@ bool vector<4, T>::operator==(vector<4, T> const& rhs) const
 }
 
 template<typename T>
+double vector<4, T>::length() const
+{
+    return sqrt(x*x + y*y + z*z + w*w);
+}
+
+template<typename T>
+void vector<4, T>::normalize()
+{
+    double l {length()};
+    if (l < 0.000001) return;
+    x /= l;
+    y /= l;
+    z /= l;
+    w /= l;
+}
+
+template<typename T>
 vector<4, T>::operator std::string() const
 {
-    return "[" + std::to_string(x) + " " + std::to_string(y) + " " + std::to_string(z) + " " + std::to_string(w) + "]";
+    std::ostringstream oss {};
+    oss << std::setprecision(3) << std::fixed;
+    oss << "[" << x << " " << y << " " << z << " " << w << "]";
+    return oss.str();
 }

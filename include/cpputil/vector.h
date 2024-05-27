@@ -61,6 +61,9 @@ public:
     bool operator==(vector<2, T> const& rhs) const;
     operator std::string() const;
 
+    double length() const;
+    void normalize();
+
     //dot product
     T operator*(vector<2, T> const& rhs) const;
         
@@ -96,6 +99,9 @@ public:
 
     bool operator==(vector<3, T> const& rhs) const;
     operator std::string() const; 
+
+    double length() const;
+    void normalize();
 
     //dot product
     T operator*(vector<3, T> const& rhs) const;
@@ -133,9 +139,55 @@ public:
     bool operator==(vector<4, T> const& rhs) const;
     operator std::string() const; 
 
+    double length() const;
+    void normalize();
+
     //dot product
     T operator*(vector<4, T> const& rhs) const;
     
+};
+
+// ========================
+// ===| hash functions |===
+// ========================
+
+template <typename T>
+struct std::hash<vector<2, T>>
+{
+    std::size_t operator()(::vector<2, T> const& v) const
+    {
+        std::size_t hash_value {};
+        hash_value ^= std::hash<T>{}(v.x) + 0x9e3779b9 + (hash_value << 6) + (hash_value >> 2);
+        hash_value ^= std::hash<T>{}(v.y) + 0x9e3779b9 + (hash_value << 6) + (hash_value >> 2);
+        return hash_value;
+    }
+};
+
+template <typename T>
+struct std::hash<vector<3, T>>
+{
+    std::size_t operator()(::vector<3, T> const& v) const
+    {
+        std::size_t hash_value {};
+        hash_value ^= std::hash<T>{}(v.x) + 0x9e3779b9 + (hash_value << 6) + (hash_value >> 2);
+        hash_value ^= std::hash<T>{}(v.y) + 0x9e3779b9 + (hash_value << 6) + (hash_value >> 2);
+        hash_value ^= std::hash<T>{}(v.z) + 0x9e3779b9 + (hash_value << 6) + (hash_value >> 2);
+        return hash_value;
+    }
+};
+
+template <typename T>
+struct std::hash<vector<4, T>>
+{
+    std::size_t operator()(::vector<4, T> const& v) const
+    {
+        std::size_t hash_value {};
+        hash_value ^= std::hash<T>{}(v.x) + 0x9e3779b9 + (hash_value << 6) + (hash_value >> 2);
+        hash_value ^= std::hash<T>{}(v.y) + 0x9e3779b9 + (hash_value << 6) + (hash_value >> 2);
+        hash_value ^= std::hash<T>{}(v.z) + 0x9e3779b9 + (hash_value << 6) + (hash_value >> 2);
+        hash_value ^= std::hash<T>{}(v.w) + 0x9e3779b9 + (hash_value << 6) + (hash_value >> 2);
+        return hash_value;
+    }
 };
 
 // ===========================
