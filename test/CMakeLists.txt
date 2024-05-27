@@ -4,5 +4,6 @@ add_executable(cpputil-test
   container.test.cc
   logger.test.cc
   json.test.cc
+  meta.test.cc
   geometry.test.cc)
 target_link_libraries(cpputil-test cpputil gtest gtest_main)

@@ -1,7 +1,10 @@
 #pragma once
 
+#include "meta.h"
+
 #include <string>
 #include <iostream>
+#include <vector>
 
 template<uint8_t N, typename T>
 class vector;
@@ -35,6 +38,9 @@ std::ostream& operator<<(std::ostream& os, vector<N, T> const& rhs);
 // ==================
 
 template<typename T>
+using vector2 = vector<2, T>;
+
+template<typename T>
 class vector<2, T>
 {
 public: 
@@ -49,7 +55,7 @@ public:
     vector(T const& x, T const& y);
 
     template<typename V>
-    vector(V const& other)
+    vector(vector<2, V> const& other)
         : vector {static_cast<T>(other.x), static_cast<T>(other.y)}
     {}
     
@@ -88,7 +94,7 @@ public:
     vector(T const& x, T const& y, T const& z);
     
     template<typename V>
-    vector(V const& other)
+    vector(vector<3,V> const& other)
         : vector {static_cast<T>(other.x), static_cast<T>(other.y), static_cast<T>(other.z)}
     {}
 
@@ -127,7 +133,7 @@ public:
     vector(T const& x, T const& y, T const& z, T const& w);
     
     template<typename V>
-    vector(V const& other)
+    vector(vector<4,V> const& other)
         : vector {static_cast<T>(other.x), static_cast<T>(other.y), static_cast<T>(other.z), static_cast<T>(other.w)}
     {}
 
