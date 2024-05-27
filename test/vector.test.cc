@@ -61,6 +61,13 @@ TEST(Vector2, Operators)
     ASSERT_EQ(v6, v5);
 }
 
+TEST(Vector2, Convertion)
+{
+    vec2i v1 {5, 2};
+    vec2f v2 {v1};
+    ASSERT_EQ(v2.x, 5);
+}
+
 TEST(Vector2, Linear_Algebra)
 {
     vec2i v1 {5, 2};

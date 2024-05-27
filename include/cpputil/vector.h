@@ -47,6 +47,11 @@ public:
 
     vector();
     vector(T const& x, T const& y);
+
+    template<typename V>
+    vector(V const& other)
+        : vector {static_cast<T>(other.x), static_cast<T>(other.y)}
+    {}
     
     vector<2, T> operator+ (vector<2, T> const& rhs) const;
     vector<2, T> operator- () const;
@@ -79,6 +84,11 @@ public:
     vector();
     vector(T const& x, T const& y, T const& z);
     
+    template<typename V>
+    vector(V const& other)
+        : vector {static_cast<T>(other.x), static_cast<T>(other.y), static_cast<T>(other.z)}
+    {}
+
     vector<3, T> operator+ (vector<3, T> const& rhs) const;
     vector<3, T> operator- () const;
     vector<3, T> operator* (T const& rhs) const;
@@ -110,6 +120,11 @@ public:
     vector();
     vector(T const& x, T const& y, T const& z, T const& w);
     
+    template<typename V>
+    vector(V const& other)
+        : vector {static_cast<T>(other.x), static_cast<T>(other.y), static_cast<T>(other.z), static_cast<T>(other.w)}
+    {}
+
     vector<4, T> operator+ (vector<4, T> const& rhs) const;
     vector<4, T> operator- () const;
     vector<4, T> operator* (T const& rhs) const;
