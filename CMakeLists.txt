@@ -3,6 +3,9 @@ cmake_minimum_required(VERSION 3.21)
 # set the name of the project, and which language it uses
 project(cpputil CXX)
 
+include(CTest)
+set(CTEST_OUTPUT_ON_FAILURE 1)
+
 set(CMAKE_CXX_STANDARD 20)
 
 # fetches a library from a git-repo and makes it available.
