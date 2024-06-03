@@ -75,6 +75,12 @@ vector<2, T> vector<2, T>::operator+(vector<2, T> const& rhs) const
 }
 
 template<typename T>
+vector<2, T> vector<2, T>::operator*(vector<2, T> const& rhs) const
+{
+    return vector{x * rhs.x, y * rhs.y};
+}
+
+template<typename T>
 vector<2, T> vector<2, T>::operator-() const
 {
     return vector{-x, -y};
@@ -123,9 +129,9 @@ void vector<2, T>::normalize()
 }
 
 template<typename T>
-T vector<2, T>::operator*(vector<2, T> const& rhs) const
+T dot(vector<2, T> const& lhs, vector<2, T> const& rhs)
 {
-    return x * rhs.x + y * rhs.y;
+    return lhs.x * rhs.x + lhs.y * rhs.y;
 }
 
 // ==================
@@ -149,6 +155,12 @@ vector<3, T> vector<3, T>::operator+(vector<3, T> const& rhs) const
 }
 
 template<typename T>
+vector<3, T> vector<3, T>::operator*(vector<3, T> const& rhs) const
+{
+    return vector{x + rhs.x, y * rhs.y, z * rhs.z};
+}
+
+template<typename T>
 vector<3, T> vector<3, T>::operator-() const
 {
     return vector{-x, -y, -z};
@@ -167,15 +179,18 @@ vector<3, T> vector<3, T>::operator/(T const& rhs) const
 }
 
 template<typename T>
-T vector<3, T>::operator*(vector<3, T> const& rhs) const
-{
-    return x * rhs.x + y * rhs.y + z * rhs.z;
-}
-
-template<typename T>
 bool vector<3, T>::operator==(vector<3, T> const& rhs) const
 {
     return x == rhs.x && y == rhs.y && z == rhs.z;
+}
+
+template<typename T>
+vector<3, T>::operator std::string() const
+{
+    std::ostringstream oss {};
+    oss << std::setprecision(3) << std::fixed;
+    oss << "[" << x << " " << y << " " << z << "]";
+    return oss.str();
 }
 
 template<typename T>
@@ -195,12 +210,17 @@ void vector<3, T>::normalize()
 }
 
 template<typename T>
-vector<3, T>::operator std::string() const
+T dot(vector<3, T> const& lhs, vector<3, T> const& rhs)
 {
-    std::ostringstream oss {};
-    oss << std::setprecision(3) << std::fixed;
-    oss << "[" << x << " " << y << " " << z << "]";
-    return oss.str();
+    return lhs.x * rhs.x + lhs.y * rhs.y + lhs.z * rhs.z;
+}
+
+template<typename T>
+vector<3, T> cross(vector<3, T> const& lhs, vector<3, T> const& rhs)
+{
+    return vector<3,T>{lhs.y * rhs.z - lhs.z * rhs.y,
+                       lhs.z * rhs.x - lhs.x * rhs.z,
+                       lhs.x * rhs.y - lhs.y * rhs.x};
 }
 
 // ==================
@@ -224,6 +244,12 @@ vector<4, T> vector<4, T>::operator+(vector<4, T> const& rhs) const
 }
 
 template<typename T>
+vector<4, T> vector<4, T>::operator*(vector<4, T> const& rhs) const
+{
+    return vector{x * rhs.x, y * rhs.y, z * rhs.z, w * rhs.w};
+}
+
+template<typename T>
 vector<4, T> vector<4, T>::operator-() const
 {
     return vector{-x, -y, -z, -w};
@@ -239,12 +265,6 @@ template<typename T>
 vector<4, T> vector<4, T>::operator/(T const& rhs) const
 {
     return vector{x / rhs, y / rhs, z / rhs, w / rhs};
-}
-
-template<typename T>
-T vector<4, T>::operator*(vector<4, T> const& rhs) const
-{
-    return x * rhs.x + y * rhs.y + z * rhs.z + w * rhs.w;
 }
 
 template<typename T>
@@ -277,4 +297,10 @@ vector<4, T>::operator std::string() const
     oss << std::setprecision(3) << std::fixed;
     oss << "[" << x << " " << y << " " << z << " " << w << "]";
     return oss.str();
+}
+
+template<typename T>
+T dot(vector<4, T> const& lhs, vector<4, T> const& rhs)
+{
+    return lhs.x * rhs.x + lhs.y * rhs.y + lhs.z * rhs.z + lhs.w * rhs.w;
 }

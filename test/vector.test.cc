@@ -51,6 +51,17 @@ TEST(Vector2, Operators)
     v4 -= v2;
     ASSERT_EQ(v4, v1);
 
+    // Multipy vectors elementwise
+    vec2i v7 {4, 6};
+    vec2i v8 {3, 1};
+    vec2i v9 {0, 2};
+    vec2i r1 {12, 6};
+    vec2i r2 {0, 12};
+    vec2i r3 {0, 2};
+    ASSERT_EQ(v7 * v8, r1);
+    ASSERT_EQ(v7 * v9, r2);
+    ASSERT_EQ(v8 * v9, r3);
+
     // Multiplication, Division
     vec2i v5 {4, 1};
     ASSERT_EQ(v5 * 3, v3);
@@ -113,8 +124,8 @@ TEST(Vector2, Linear_Algebra)
     vec2i v3 {2, -5};
 
     // Dot product
-    ASSERT_EQ(v1 * v2, 37);
-    ASSERT_EQ(v1 * v3, 0);
+    ASSERT_EQ(dot(v1, v2), 37);
+    ASSERT_EQ(dot(v1, v3), 0);
 }
 
 TEST(Vector2, Stream_Operator)
@@ -231,11 +242,23 @@ TEST(Vector3, Linear_Algebra)
     vec3i v2 {7, 1, 3};
 
     // Dot product
-    ASSERT_EQ(v1 * v2, 49);
+    ASSERT_EQ(dot(v1, v2), 49);
 
     vec3i v3 {0,1,0};
     vec3i v4 {1,0,1};
-    ASSERT_EQ(v3 * v4, 0);
+    ASSERT_EQ(dot(v3, v4), 0);
+
+    // Cross product
+    vec3i v5 {2, 5, 1};
+    vec3i v6 {3, 3, 3};
+    vec3i v7 {1, 2, 3};
+    vec3i r1 {12, -3, -9};
+    vec3i r2 {13, -5, -1};
+    vec3i r3 {3, -6, 3};
+    ASSERT_EQ(cross(v5, v6), r1);
+    ASSERT_EQ(cross(v5, v7), r2);
+    ASSERT_EQ(cross(v6, v7), r3);
+    ASSERT_EQ(cross(v6, v5), -r1);
     
 }
 
@@ -327,11 +350,11 @@ TEST(Vector4, Linear_Algebra)
     vec4i v2 {7, 1, 3, 2};
 
     // Dot product
-    ASSERT_EQ(v1 * v2, 63);
+    ASSERT_EQ(dot(v1, v2), 63);
 
     vec4i v3 {0, 1, 0, 0};
     vec4i v4 {1, 0, 1, 1};
-    ASSERT_EQ(v3 * v4, 0);
+    ASSERT_EQ(dot(v3, v4), 0);
     
 }
 

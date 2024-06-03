@@ -1,7 +1,5 @@
 #pragma once
 
-#include "meta.h"
-
 #include <string>
 #include <iostream>
 #include <vector>
@@ -59,21 +57,22 @@ public:
         : vector {static_cast<T>(other.x), static_cast<T>(other.y)}
     {}
     
-    vector<2, T> operator+ (vector<2, T> const& rhs) const;
-    vector<2, T> operator- () const;
-    vector<2, T> operator* (T const& rhs) const;
-    vector<2, T> operator/ (T const& rhs) const;
+    vector<2, T> operator+(vector<2, T> const& rhs) const;
+    vector<2, T> operator*(vector<2, T> const& rhs) const;
+
+    vector<2, T> operator-() const;
+    vector<2, T> operator*(T const& rhs) const;
+    vector<2, T> operator/(T const& rhs) const;
     
     bool operator==(vector<2, T> const& rhs) const;
     operator std::string() const;
 
     double length() const;
     void normalize();
-
-    //dot product
-    T operator*(vector<2, T> const& rhs) const;
-        
 };
+
+template<typename T>
+T dot(vector<2, T> const& lhs, vector<2, T> const& rhs);
 
 // ==================
 // ===| vector 3 |===
@@ -98,21 +97,24 @@ public:
         : vector {static_cast<T>(other.x), static_cast<T>(other.y), static_cast<T>(other.z)}
     {}
 
-    vector<3, T> operator+ (vector<3, T> const& rhs) const;
-    vector<3, T> operator- () const;
-    vector<3, T> operator* (T const& rhs) const;
-    vector<3, T> operator/ (T const& rhs) const;
+    vector<3, T> operator+(vector<3, T> const& rhs) const;
+    vector<3, T> operator*(vector<3, T> const& rhs) const;
+    vector<3, T> operator-() const;
+    vector<3, T> operator*(T const& rhs) const;
+    vector<3, T> operator/(T const& rhs) const;
 
     bool operator==(vector<3, T> const& rhs) const;
     operator std::string() const; 
 
     double length() const;
     void normalize();
-
-    //dot product
-    T operator*(vector<3, T> const& rhs) const;
-    
 };
+
+template<typename T>
+T dot(vector<3, T> const& lhs, vector<3, T> const& rhs);
+
+template<typename T>
+vector<3, T> cross(vector<3, T> const& lhs, vector<3, T> const& rhs);
 
 // ==================
 // ===| vector 4 |===
@@ -134,24 +136,25 @@ public:
     
     template<typename V>
     vector(vector<4,V> const& other)
-        : vector {static_cast<T>(other.x), static_cast<T>(other.y), static_cast<T>(other.z), static_cast<T>(other.w)}
+        : vector {static_cast<T>(other.x), static_cast<T>(other.y),
+                  static_cast<T>(other.z), static_cast<T>(other.w)}
     {}
 
-    vector<4, T> operator+ (vector<4, T> const& rhs) const;
-    vector<4, T> operator- () const;
-    vector<4, T> operator* (T const& rhs) const;
-    vector<4, T> operator/ (T const& rhs) const;
+    vector<4, T> operator+(vector<4, T> const& rhs) const;
+    vector<4, T> operator*(vector<4, T> const& rhs) const;
+    vector<4, T> operator-() const;
+    vector<4, T> operator*(T const& rhs) const;
+    vector<4, T> operator/(T const& rhs) const;
 
     bool operator==(vector<4, T> const& rhs) const;
     operator std::string() const; 
 
     double length() const;
     void normalize();
-
-    //dot product
-    T operator*(vector<4, T> const& rhs) const;
-    
 };
+
+template<typename T>
+T dot(vector<4, T> const& lhs, vector<4, T> const& rhs);
 
 // ========================
 // ===| hash functions |===
