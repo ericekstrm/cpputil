@@ -181,9 +181,12 @@ struct std::hash<vector<4, T>>
 
 using vec2i = vector<2, int>;
 using vec2f = vector<2, float>;
+using vec2d = vector<2, double>;
 using vec3i = vector<3, int>;
 using vec3f = vector<3, float>;
+using vec3d = vector<3, double>;
 using vec4i = vector<4, int>;
 using vec4f = vector<4, float>;
+using vec4d = vector<4, double>;
 
 #include "vector.tcc"
