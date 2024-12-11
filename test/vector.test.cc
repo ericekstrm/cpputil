@@ -51,6 +51,17 @@ TEST(Vector2, Operators)
     v4 -= v2;
     ASSERT_EQ(v4, v1);
 
+    // Addition, Subtraction with scalar
+    vec2i v5 {7,4};
+    vec2i v6 {11,2};
+    ASSERT_EQ(v1 + 2, v5);
+    ASSERT_EQ(v3 - 1, v6);
+    v4 += v2;
+    ASSERT_EQ(v4, v3);
+    v4 -= v2;
+    ASSERT_EQ(v4, v1);
+
+
     // Multipy vectors elementwise
     vec2i v7 {4, 6};
     vec2i v8 {3, 1};
@@ -63,14 +74,14 @@ TEST(Vector2, Operators)
     ASSERT_EQ(v8 * v9, r3);
 
     // Multiplication, Division
-    vec2i v5 {4, 1};
-    ASSERT_EQ(v5 * 3, v3);
-    ASSERT_EQ(3 * v5, v3);
-    vec2i v6 {v5};
-    v6 *= 3;
-    ASSERT_EQ(v6, v3);
-    v6 /= 3;
-    ASSERT_EQ(v6, v5);
+    vec2i v10 {4, 1};
+    ASSERT_EQ(v10 * 3, v3);
+    ASSERT_EQ(3 * v10, v3);
+    vec2i v11 {v10};
+    v11 *= 3;
+    ASSERT_EQ(v11, v3);
+    v11 /= 3;
+    ASSERT_EQ(v11, v10);
 }
 
 TEST(Vector2, Convertion)

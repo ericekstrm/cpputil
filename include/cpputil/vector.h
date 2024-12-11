@@ -17,6 +17,15 @@ template<uint8_t N, typename T>
 vector<N, T>& operator-=(vector<N, T> & lhs, vector<N, T> const& rhs);
 
 template<uint8_t N, typename T>
+vector<N, T>  operator- (vector<N, T> const& lhs, T const& rhs);
+
+template<uint8_t N, typename T>
+vector<N, T>&  operator-= (vector<N, T> const& lhs, T const& rhs);
+
+template<uint8_t N, typename T>
+vector<N, T>&  operator+= (vector<N, T> const& lhs, T const& rhs);
+
+template<uint8_t N, typename T>
 vector<N, T>& operator*=(vector<N, T> & lhs, T const& rhs);
 
 template<uint8_t N, typename T>
@@ -61,6 +70,7 @@ public:
     vector<2, T> operator*(vector<2, T> const& rhs) const;
 
     vector<2, T> operator-() const;
+    vector<2, T> operator+(T const& rhs) const;
     vector<2, T> operator*(T const& rhs) const;
     vector<2, T> operator/(T const& rhs) const;
     
@@ -100,6 +110,7 @@ public:
     vector<3, T> operator+(vector<3, T> const& rhs) const;
     vector<3, T> operator*(vector<3, T> const& rhs) const;
     vector<3, T> operator-() const;
+    vector<3, T> operator+(T const& rhs) const;
     vector<3, T> operator*(T const& rhs) const;
     vector<3, T> operator/(T const& rhs) const;
 
@@ -143,6 +154,7 @@ public:
     vector<4, T> operator+(vector<4, T> const& rhs) const;
     vector<4, T> operator*(vector<4, T> const& rhs) const;
     vector<4, T> operator-() const;
+    vector<4, T> operator+(T const& rhs) const;
     vector<4, T> operator*(T const& rhs) const;
     vector<4, T> operator/(T const& rhs) const;
 

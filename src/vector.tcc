@@ -23,6 +23,26 @@ vector<N, T>& operator-=(vector<N, T> & lhs, vector<N, T> const& rhs)
 }
 
 template<uint8_t N, typename T>
+vector<N, T>  operator- (vector<N, T> const& lhs, T const& rhs)
+{
+    return lhs + (-rhs);
+}
+
+template<uint8_t N, typename T>
+vector<N, T>&  operator-= (vector<N, T> const& lhs, T const& rhs)
+{
+    lhs = lhs - rhs;
+    return lhs;
+}
+
+template<uint8_t N, typename T>
+vector<N, T>&  operator+= (vector<N, T> const& lhs, T const& rhs)
+{
+    lhs = lhs + rhs;
+    return lhs;
+}
+
+template<uint8_t N, typename T>
 vector<N, T>& operator*=(vector<N, T> & lhs, T const& rhs)
 {
     lhs = lhs * rhs;
@@ -84,6 +104,12 @@ template<typename T>
 vector<2, T> vector<2, T>::operator-() const
 {
     return vector{-x, -y};
+}
+
+template<typename T>
+vector<2, T> vector<2, T>::operator+(T const& rhs) const
+{
+    return vector{x + rhs, y + rhs};
 }
 
 template<typename T>
@@ -164,6 +190,12 @@ template<typename T>
 vector<3, T> vector<3, T>::operator-() const
 {
     return vector{-x, -y, -z};
+}
+
+template<typename T>
+vector<3, T> vector<3, T>::operator+(T const& rhs) const
+{
+    return vector{x + rhs, y + rhs, z + rhs};
 }
 
 template<typename T>
@@ -253,6 +285,12 @@ template<typename T>
 vector<4, T> vector<4, T>::operator-() const
 {
     return vector{-x, -y, -z, -w};
+}
+
+template<typename T>
+vector<4, T> vector<4, T>::operator+(T const& rhs) const
+{
+    return vector{x + rhs, y + rhs, z + rhs, w + rhs};
 }
 
 template<typename T>
