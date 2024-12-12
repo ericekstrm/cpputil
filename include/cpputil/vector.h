@@ -3,6 +3,7 @@
 #include <string>
 #include <iostream>
 #include <vector>
+#include <cstdint>
 
 template<uint8_t N, typename T>
 class vector;
