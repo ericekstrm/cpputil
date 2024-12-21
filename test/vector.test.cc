@@ -393,3 +393,13 @@ TEST(Vector2, vector_in_set)
     ASSERT_TRUE(s2.contains(vec2f{3.3, 9.9}));
 
 }
+ 
+TEST(Vector2, type_convertion)
+{
+    vec2i i1 {6, 5}, i2 {3,4};
+    vec2f f1 {5.5, 4.5}, f2{1.2, 3.3};
+
+    vec2f true_res {0.5,0.5};
+    vec2f res { i1 - f1 };
+    ASSERT_EQ(res, true_res);
+}
