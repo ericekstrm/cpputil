@@ -45,9 +45,6 @@ std::ostream& operator<<(std::ostream& os, vector<N, T> const& rhs);
 // ==================
 
 template<typename T>
-using vector2 = vector<2, T>;
-
-template<typename T>
 class vector<2, T>
 {
 public: 
@@ -65,6 +62,12 @@ public:
     vector(vector<2, V> const& other)
         : vector {static_cast<T>(other.x), static_cast<T>(other.y)}
     {}
+
+    template<typename V>
+    operator vector<2, V>()
+    {
+        return vector<2, V>{static_cast<V>(x), static_cast<V>(y)};
+    }
     
     vector<2, T> operator+(vector<2, T> const& rhs) const;
     vector<2, T> operator*(vector<2, T> const& rhs) const;
@@ -106,6 +109,12 @@ public:
     vector(vector<3,V> const& other)
         : vector {static_cast<T>(other.x), static_cast<T>(other.y), static_cast<T>(other.z)}
     {}
+
+    template<typename V>
+    operator vector<3, V>()
+    {
+        return vector<3, V>{static_cast<V>(x), static_cast<V>(y), static_cast<V>(z)};
+    }
 
     vector<3, T> operator+(vector<3, T> const& rhs) const;
     vector<3, T> operator*(vector<3, T> const& rhs) const;
@@ -150,6 +159,12 @@ public:
         : vector {static_cast<T>(other.x), static_cast<T>(other.y),
                   static_cast<T>(other.z), static_cast<T>(other.w)}
     {}
+
+    template<typename V>
+    operator vector<4, V>()
+    {
+        return vector<4, V>{static_cast<V>(x), static_cast<V>(y), static_cast<V>(z), static_cast<V>(w)};
+    }
 
     vector<4, T> operator+(vector<4, T> const& rhs) const;
     vector<4, T> operator*(vector<4, T> const& rhs) const;
